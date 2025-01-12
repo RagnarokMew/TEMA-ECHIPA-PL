@@ -1,0 +1,25 @@
+# Lungimea Microinstructiunii
+
+## Calcul Biti (Input, Output, Addr)
+
+$Numar\ stari = 28\  \Longrightarrow  n_{addr} = 5\ biti$
+
+$Numar\ intrari = 11\  \Longrightarrow  n_{input} = 4\ biti$
+
+$Numar\ iesiri = 6\  \Longrightarrow  n­_{output} = 6\ biti$
+
+## Tip 0
+
+$L_{μ0} = 1 + n_{input} + n_{addr} = 1 + 5 + 4$
+
+$L_{μ0} = 10\ biti$
+
+## Tip 1
+
+$L_{μ1} = 1 + n_{output} = 1 + 6$
+
+$L_{μ1} = 7\ biti$
+
+## Lungimea Finala a Microinstructiunii
+
+$L_μ = max\{ L_{μ0}, L_{μ1} \} = 10\ biti$
