@@ -1,0 +1,30 @@
+project:
+  type: book
+
+book:
+  title: "Proiect_PL_Echipa"
+  author: 
+    - "Simion Ștefan"
+    - "Lorem Ipsum"
+    - "Lorem Ipsum"
+    - "Lorem Ipsum"
+  date: "TBD"
+  chapters:
+    - index.qmd
+    - src/mod_functionare.qmd
+    - src/schema_bloc.qmd
+    - src/organigrama.qmd
+    - src/lungime_microinstr.qmd
+    - src/schema_comanda.qmd
+    - src/continut_memorie.qmd
+    - src/componente_util.qmd
+    - src/circuit.qmd
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+
+
