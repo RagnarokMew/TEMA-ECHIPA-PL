@@ -8,7 +8,7 @@ book:
     - "Ciucă Lucas"
     - "Paraschiva George-Călin"
     - "Cristian Andrei"
-  date: "13/01/2025"
+  date: "01/13/2025"
   chapters:
     - index.qmd
     - src/mod_functionare.qmd
