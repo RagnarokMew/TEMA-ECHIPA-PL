@@ -1,0 +1,8 @@
+# Componente
+
+* Circuit de memorie : 264x4 MWS5101
+* MUX : 54150
+* Registrul: SN74193
+* Porti Sau: 7408
+* Poarta or :7432
+* Poarta Not : 7404
