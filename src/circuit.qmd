@@ -1,0 +1,40 @@
+# Cablajul
+
+## Conexiunile dintre memorie si multiplexor
+
+* M1 - TIP + D C B + y1-3
+* M2 – A + ADR0-2 + y4-6
+* M3 – ADR3,4
+* DO1(M1) - B(MUX)
+* DO2(M1) - C(MUX)
+* DO3(M1) - D(MUX)
+* DO4(M2) - A(MUX)
+* E1-11(MUX) conectat la intrarile x1-x11
+
+## Conexiunile dintre memorie, multiplexor
+
+* DO4(1) - 1 OR
+* W OUT (MUX) - 1 NOT
+* 2 NOT – 2 OR
+
+## Adrese / Registre :
+
+* UP(1) - !CO(2)
+* 3 sau – LOAD(N1 si 2) si UP(N2)
+* A7-4 – QD-A(N1)
+* A3-0 – QD-A(N2)
+
+* D–B (N1) -- DO3–1 (M2)
+* A (N1) -- DO4 (M3)
+* D–B (N2) -- DO3–1 (M3)
+* A (N2) -- DO4 (M4)
+
+## Masca:
+
+* DO4 (M1) -- 1, 4, 10, 13 (AND 1); 1, 4 (AND 2) ==> Tip instr.
+* DO3–1 (M1) -- 2, 5, 12 (AND 1) ==> LOG_AMMO, LOG_INSTR, FIRE
+* DO4–2 (M2) -- 9 (AND 1); 2, 5 (AND 2) ==> LOG_FIRE, LOG_ERROR, LOG_TARGET
+
+## Schema Cablaj
+
+![Cablaj](../img/Cablaj_FINAL.drawio.svg)
