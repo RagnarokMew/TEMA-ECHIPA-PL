@@ -20,6 +20,15 @@ $L_{μ1} = 1 + n_{output} = 1 + 6$
 
 $L_{μ1} = 7\ biti$
 
-## Lungimea Finala a Microinstructiunii
+## Lungimea Finala a Microinstructiunii (fara memorie aleasa)
 
 $L_μ = max\{ L_{μ0}, L_{μ1} \} = 10\ biti$
+
+## Lungimea Finala a Microinstructiunii
+
+Tinand cont de memoria aleasa care este 256 x 4, starile au 8 biti
+
+$n_{addr} = 8\ biti$
+$\Longrightarrow L_{μ0} = 10 + 3 = 13$
+
+$L_μ = max\{ L_{μ0}, L_{μ1} \} = 13\ biti$
