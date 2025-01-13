@@ -1,0 +1,47 @@
+# Functionalitate
+
+Automatul porneste in starea ``INACTIVE`` in care este oprit. Acesta se activeaza cand primeste semnalul de pornire (``ACT``) si ajunge în starea ``ACTIVE``.
+
+Daca este selectat modul de functionare manual prin semnalul ``MAN``, atunci automatul intra in starea ``MANUAL``. 
+Apoi, primeste ce tip de munitie trebue sa utilizeze prin semnalul ``TYPE``. Daca semnalul este 1 
+atunci este selectata munitia normala si se trece in starea ``NORMAL``, iar daca este 0 atunci 
+munitia este explosiva si se trece in starea ``EXPLOSIVE``. In ambele stari se verifica daca exista 
+tipul respectiv de munitite prin semnalul ``AMMO_CHECK``.
+
+Daca nu mai exista tipul respectiv de munitie se trece in starea ``NO_AMMO``. Apoi se trimite catre 
+unitatea de logging eroarea pe care a intalnit-o prin semnalul ``LOG_ERROR`` si trece in starea ``AMMO_LOG``, 
+fiind transmis deja eroarea si apoi trece in starea ``INACTIVE``.
+
+Daca exista munitie normala, se trece din starea ``NORMAL`` in starea ``HAS_AMMO``, automatul stiind 
+ca are munitie normala pentru a trage.
+
+Daca exista munitie explosiva, se trece din starea ``EXPLOSIVE`` in starea ``AMMO_STATE`` si apoi trece in 
+starea ``HAS_AMMO``, automatul stiind ca are munitie explosiva pentru a trage.
+si trece in starea ``ON_TARG``, mitraliera fiind pozitionata pe locatia dorita.
+
+Din starea ``HAS_AMMO``, automatul trimite catre unitatea de logging ce tip ne munitie utilizeaza 
+prin semnalul ``LOG_AMMO`` si trece in starea ``AWAIT_INSTR``, unde asteapta sa primeasca instructiuni. 
+Daca nu primeste instructiuni prin semnalul ``RCV`` atunci ramane in starea ``AWAIT_INSTR``, iar in caz contrar 
+trece in starea ``CONF_INSTR``. Avand instructiunile, automatul trimite detele relevante din 
+instructiuni catre unitatea de logging prin semnalul ``LOG_INSTR`` si trece in starea ``ON_TARG``.
+
+Daca nu a fost selectat modul de functionare manual, sentry gun-ul intra in modul automat, trecand in starea ``AUTOMATIC``. Daca senzorul detecteaza un individ/obiect 
+in spatiul protejat prin semnalul ``DET`` aparatul trece in starea ``DETECTED``, fiind constientizata prezenta unui individ/obiect, altfel în ``INACTIVE``. Din ``DETECT``, automatul 
+trimite semnalul ``LOG_TARGET`` semnaland ca trimite datele primite de la senzor catre modulul de logging si trece in starea 
+``LOAD_AMMO``. Apoi automatul verifica daca are munitie sa traga (tipul munitiei fiind selectat automat), prin semnalul ``AMMO_CHECK``. 
+Daca nu are munitie atunci trece in starea ``INACTIVE``, iar in caz contrar trece in starea ``AWAIT_TARG``, automatul asteptand ca 
+mitraliera sa fie pozitionata pe individ / obiect. Daca mitraliera este pozitionata corect pe individ/obiect, atunci se primeste semnalul ``ON_SIGHT``si trece in starea ``AUTO_STATE`` apoi in starea ``ON_TARG``, aparatul știind ca are mitraliera 
+pozitionata corect pe individ/obiect. Daca nu este pozitionata corect atunci trece in starea ``AUTOMATIC``.
+
+Din starea ``ON_TARG`` automatul verifica daca mitraliera este functionala (are munitie, etc) prin semnalul ``CAN_FIRE``. Daca mitraliera nu poate trage, 
+automatul trece in starea ``INACTIVE``, iar daca aceasta este functionala trece in starea ``POS_FIRE``, aparatul avand posibilitatea de a trage în locul dorit 
+sau in individul/obiectul care a intrat in spatiul protejat. Avand posibilitatea de a trage, automatul trimite semnalul ``FIRE`` 
+catre mitraliera pentru a o porni si trece in starea ``SIG_FIRE``. Apoi automatul verifica daca mitraliera a inceput sa traga prin semnalul ``STATUS``.
+
+Daca mitraliera nu a inceput sa traga, atunci automatul trece in starea ``WAIT_FIRE``, aparatul asteptand sa porneasca mitraliera. Automatul verifica daca a 
+trecut prea mult timp de cand a trimis primul semnal de ``FIRE`` (= daca a facut timeout), prin semnalul ``T_O``. Daca 
+da, atunci trece in starea ``INACTIVE``, iar daca nu, trece in starea ``POS_FIRE``.
+
+Daca mitraliera porneste (automatul primeste semnalul ``STATUS``), atunci automatul trece in starea ``STAT_FIRE``, aparatul impușcand locatia dorita sau 
+individul/obiectul care a intrat in spatiul protejat si trimite semnalul ``LOG_FIRE``, indicand ca transmite informatii 
+de log (cat a durat sa se porneasca mitraliera, munitia consumata, etc), catre modulul de logging si trece in starea ``FIRE_STATE``, apoi trece in starea ``ACTIVE``.
