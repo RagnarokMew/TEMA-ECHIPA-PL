@@ -25,7 +25,10 @@
 
 ## Observatii
 
-In tabel, am denumit starile care nu pot fi accesate cu ``NULL``, cele neutilizate cu ``UNUSED``.
+In tabel, am denumit starile care nu pot fi accesate cu ``NULL``, cele neutilizate cu ``UNUSED``. ... 
+reprezinta toate liniile de memorie ``UNUSED`` de la ``00011111`` la ``11111111``.
+
+{{< pagebreak >}}
 
 ## Memorie
 
