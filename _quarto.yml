@@ -5,10 +5,10 @@ book:
   title: "Proiect_PL_Echipa"
   author: 
     - "Simion Ștefan"
-    - "Lorem Ipsum"
-    - "Lorem Ipsum"
-    - "Lorem Ipsum"
-  date: "TBD"
+    - "Ciucă Lucas"
+    - "Paraschiva George-Călin"
+    - "Cristian Andrei"
+  date: "13/01/2025"
   chapters:
     - index.qmd
     - src/mod_functionare.qmd
